@@ -253,10 +253,16 @@ let increaseCartProdcutCount = (idx) => {
 };
 let decreaseCartProdcutCount = (idx) => {
   
-    cart[idx].count--;
+    
 
     if( cart[idx].count < 1 ){
     removeCartProdcut(idx);
+      cart[idx].count = 0;
+      
+    }else{
+      cart[idx].count--;
+      
+    
     }
    
 
