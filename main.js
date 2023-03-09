@@ -225,14 +225,8 @@ if (productsContainer) {
 
        productsContainer.innerHTML += productCard;
        
-      });
-      
-
-      
+      });     
 }
-    
-
-
 // cart functions
 
 
@@ -246,9 +240,6 @@ let getTotalPrice = () => {
 
 };
 
-
-
-
 let increaseCartProdcutCount = (idx) => {
   cart[idx].count++;
   prodcutCounts[idx].innerHTML = cart[idx].count;
@@ -261,7 +252,7 @@ let increaseCartProdcutCount = (idx) => {
 
 };
 let decreaseCartProdcutCount = (idx) => {
-  cart[idx].count <= 1 ? removeCartProdcut(idx) : null;
+  cart[idx].count < 1 ? removeCartProdcut(idx) : null;
 
   cart[idx].count--;
   prodcutCounts[idx].innerHTML = cart[idx].count;
