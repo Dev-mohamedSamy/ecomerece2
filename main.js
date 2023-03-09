@@ -252,9 +252,14 @@ let increaseCartProdcutCount = (idx) => {
 
 };
 let decreaseCartProdcutCount = (idx) => {
-  cart[idx].count < 1 ? removeCartProdcut(idx) : null;
+  
+    cart[idx].count--;
 
-  cart[idx].count--;
+    if( cart[idx].count < 1 ){
+    removeCartProdcut(idx);
+    }
+   
+
   prodcutCounts[idx].innerHTML = cart[idx].count;
   cartProdcutsPrice[idx].innerHTML = ` ${
     cart[idx].count * cart[idx].product_price
