@@ -86,7 +86,7 @@ if (!localStorage.products) {
   
 }
 
-function saveProductsToLocalStorage(savedProducts) {
+let saveProductsToLocalStorage = (savedProducts) => {
   products = localStorage.setItem("products", JSON.stringify(savedProducts));
 }
 
