@@ -244,10 +244,9 @@ let getTotalPrice = () => {
 let removeCartProdcut = (idx) => {
   cart = cart.filter((cartProdcut) => cartProdcut.id !== idx);
   cartRows[idx].style.display = "none";
-  console.log(idx);
   getTotalPrice();
   getCartLength(cart.length);
-    saveCartToLocalStorage(cart);
+  saveCartToLocalStorage(cart);
 
 
 };
@@ -266,8 +265,8 @@ let decreaseCartProdcutCount = (idx) => {
   
     
 
-    if( cart[idx].count < 2 ){
-    removeCartProdcut(idx);
+    if( idx < 2 ){
+      removeCartProdcut(idx);
       cart[idx].count = 0;
       
     }else{
