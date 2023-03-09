@@ -240,6 +240,17 @@ let getTotalPrice = () => {
 
 };
 
+
+let removeCartProdcut = (idx) => {
+  cart = cart.filter((cartProdcut) => cartProdcut.id !== idx);
+  cartRows[idx].style.display = "none";
+  console.log(idx);
+  getTotalPrice();
+  getCartLength(cart.length);
+    saveCartToLocalStorage(cart);
+
+
+};
 let increaseCartProdcutCount = (idx) => {
   cart[idx].count++;
   prodcutCounts[idx].innerHTML = cart[idx].count;
@@ -275,16 +286,6 @@ let decreaseCartProdcutCount = (idx) => {
 
 };
 
-let removeCartProdcut = (idx) => {
-  cart = cart.filter((cartProdcut) => cartProdcut.id !== idx);
-  cartRows[idx].style.display = "none";
-  console.log(idx);
-  getTotalPrice();
-  getCartLength(cart.length);
-    saveCartToLocalStorage(cart);
-
-
-};
 
 
 // check the cartTableTbody  exists or not 
