@@ -9,7 +9,6 @@ let modal = document.querySelector(".product-card-modal-overlay");
 let cartTableTbody = document.querySelector(".cart-table-tbody");
 let totalPriceCell = document.querySelector(".total-price");
 
-// save products to loacl storage
 
 // products array
 let products = [
