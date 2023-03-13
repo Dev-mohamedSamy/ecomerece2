@@ -137,7 +137,6 @@ onload = () => {
   cartRows = document.querySelectorAll(".cart-table-tbody-row");
 };
 
-  
 let addToCart = (i) => {
     if (!products[i].added_to_cart) {
       cart.push(products[i]);
@@ -216,24 +215,31 @@ let getTotalPrice = () => {
   totalPriceCell.innerHTML = `${sumTotalPrice} $`;
 };
 let removeCartProdcut = (idx) => {
-    cart = cart.filter((cartProdcut) => cartProdcut.id !== idx);
+  if (idx == 0) {
+    cart = []
+  } else {
+    let filtredCart = cart.filter(cartProdcut => cartProdcut.id !== idx);
+    cart = filtredCart;
+  }
     saveCartToLocalStorage(cart); 
     getTotalPrice();
     getCartLength(cart.length);
     cartRows[idx].style.display = "none";
     displayProdcutsDropdownMenu(cart);
-  };
-  let increaseCartProdcutCount = (idx) => {
+};
+let increaseCartProdcutCount = (idx) => {
     cart[idx].count +=1;
     prodcutCounts[idx].innerHTML = cart[idx].count;
     cartProdcutsPrice[idx].innerHTML = `${cart[idx].count * cart[idx].product_price} $`;
     getTotalPrice();
     saveCartToLocalStorage(cart);
   };
-  let decreaseCartProdcutCount = (idx) => {
+let decreaseCartProdcutCount = (idx) => {
     if( cart[idx].count < 1 ){
-      cart = cart.filter((cartProdcut) => cartProdcut.id !== idx);
+      cart.splice(idx , 1);
       cartRows[idx].style.display = "none";
+      prodcutCounts[idx].innerHTML = cart[idx].count;
+      cartProdcutsPrice[idx].innerHTML = ` ${cart[idx].count * cart[idx].product_price} $`;
     }else{
       cart[idx].count--;      
       prodcutCounts[idx].innerHTML = cart[idx].count;
